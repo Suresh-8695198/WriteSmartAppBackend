@@ -1,20 +1,28 @@
 # firebase_auth.py
 
-import firebase_admin
 from firebase_admin import firestore
 
-# Function to verify student data from Firebase Firestore
 def verify_student(register_number, dob):
     db = firestore.client()  # Initialize Firestore
     try:
-        # Assuming you have a collection called 'students' in Firestore
-        student_ref = db.collection('students').document(register_number)
-        student = student_ref.get()
-        if student.exists:
+        # Query the Firestore collection for both register_number and dob
+        students_ref = db.collection('students')
+        query = students_ref.where('register_number', '==', register_number).where('dob', '==', dob)
+        results = query.stream()
+
+        # Debug: Check and print results
+        found = False
+        for student in results:
             student_data = student.to_dict()
-            # Check if the DOB matches
-            if student_data.get('dob') == dob:
-                return True
+            if student_data.get("register_number") == register_number and student_data.get("dob") == dob:
+                found = True
+                break
+
+        if found:
+            return True
+        else:
+            print("No matching document found with both register_number and dob.")
+            return False
     except Exception as e:
-        print(f"Error fetching data: {e}")
-    return False
+        print(f"Error fetching data from Firestore: {e}")
+        return False

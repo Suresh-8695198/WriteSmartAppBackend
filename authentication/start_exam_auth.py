@@ -11,8 +11,10 @@ def start_exam_authentication(request):
     serializer = StudentLoginSerializer(data=request.data)
     if serializer.is_valid():
         register_number = serializer.validated_data['register_number']
-        dob = serializer.validated_data['dob']
-
+        
+        # Convert dob to string format to match Firestore's format
+        dob = serializer.validated_data['dob'].strftime("%Y-%m-%d")
+        
         # Use Firebase function to verify student data
         if verify_student(register_number, dob):
             return Response({"message": "Authentication successful. Start the exam!"}, status=status.HTTP_200_OK)
