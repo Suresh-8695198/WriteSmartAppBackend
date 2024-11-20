@@ -11,8 +11,12 @@ urlpatterns = [
     path("upload-student-image/", image_views.upload_student_image, name="upload_student_image"),
     path("start-exam/", start_exam_authentication, name='start_exam_authentication'),
     path('get-exam-questions/', get_exam_questions, name='get_exam_questions'),
+<<<<<<< HEAD
 
    
+=======
+    path('write-answer/', views.write_answer, name='write_answer'),
+>>>>>>> 0184e5b7472c3989004409ffae6f149a18177740
 ]
 
 
