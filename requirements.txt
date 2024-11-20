@@ -2,3 +2,19 @@ Django>=3.0,<5.0
 firebase-admin
 google-cloud-firestore
 requests
+requests==2.31.0
+torch==2.0.1
+torchaudio==2.0.1
+transformers==4.34.0
+pyttsx3==2.90
+whisper @ git+https://github.com/openai/whisper.git
+sounddevice==0.4.6
+numpy==1.24.3
+scipy==1.10.1
+firebase-admin==6.2.0
+openai==0.27.8
+cloudinary
+django-cloudinary-storage
+djangorestframework
+django-extensions
+Pillow
