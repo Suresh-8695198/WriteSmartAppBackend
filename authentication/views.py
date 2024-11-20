@@ -85,8 +85,6 @@ def verify_otp_view(request):
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
 # authentication/views.py
-
-
 def get_exam_questions(request):
     try:
         # Fetch questions from Firebase

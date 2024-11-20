@@ -12,8 +12,7 @@ urlpatterns = [
     path("start-exam/", start_exam_authentication, name='start_exam_authentication'),
     path('get-exam-questions/', get_exam_questions, name='get_exam_questions'),
 
-    #speech to text
-    path('exam/', include('speech-to-text.urls')),  
+   
 ]
 
 
